@@ -13,10 +13,10 @@ function NavBar() {
             </div>
             <div className='header-container-navbar'>
                 <ul className='navbar'>
-                    <li><Button variant="outlined" className='button'><a href="#inicio">INICIO</a></Button></li>
-                    <li><Button variant="outlined" className='button'><a href="#inicio">PRODUCTOS</a></Button></li>
-                    <li><Button variant="outlined" className='button'><a href="#inicio">NOSOTROS</a></Button></li>
-                    <li><Button variant="outlined" className='button'><a href="#inicio">CONTACTO</a></Button></li>
+                    <li><Button variant="outlined" color="secondary" className='button'><a href="#inicio">INICIO</a></Button></li>
+                    <li><Button variant="outlined" color="secondary" className='button'><a href="#inicio">PRODUCTOS</a></Button></li>
+                    <li><Button variant="outlined" color="secondary" className='button'><a href="#inicio">NOSOTROS</a></Button></li>
+                    <li><Button variant="outlined" color="secondary" className='button'><a href="#inicio">CONTACTO</a></Button></li>
                 </ul>
             </div>
             <div className="header-container-carrito">

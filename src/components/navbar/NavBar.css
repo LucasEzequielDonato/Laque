@@ -28,20 +28,23 @@
 }
 .button a {
   color: black !important;
+  font-family: "Hubballi", cursive;
+  font-style: italic;
+  font-weight: bolder;
+  text-transform: inherit;
 }
 .header-container-carrito {
-  background-color: rgba(255, 192, 203, 0.25);
   border-radius: 1000px;
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: all 0.5s;
 }
-.header-container-carrito :hover {
-  transition: all 0.5s;
-  transform: scale(1.2);
+.header-container-carrito:hover {
+  background-color: rgba(255, 192, 203, 0.25);
+  transform: scale(1.1);
 }
 .header-container-carrito img {
   width: 35px;
