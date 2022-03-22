@@ -8,9 +8,9 @@ function Card(props) {
             <img src={FotoProducto} alt="Icono Producto"></img>
             <div className='container-description'>
                 <p className='description-titulo'>{props.titulo}</p>
-                <p className='description-talle'>Talle: {props.talle}</p>
+                <p className='description-talle'>{props.talle}</p>
                 <p className='description-precio'>$ {props.precio}</p>
-                <button>Comprar</button>
+                <button>COMPRAR</button>
             </div>
         </div>
     );
