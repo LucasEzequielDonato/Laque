@@ -1,0 +1,14 @@
+.container-cards {
+  width: 100%;
+}
+.cards-category {
+  width: 100%;
+  margin: 10px auto;
+}
+.container-category-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  margin: 20px 0px;
+}

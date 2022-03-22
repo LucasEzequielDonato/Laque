@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '@mui/material/Button';
 import './NavBar.css';
 import Logo from "./logo-laque.webp";
-import IconoCarrito from "./cart-outline.svg";
+import Carrito from "../cartwidget/CartWidget";
 
 function NavBar() {
     return (
@@ -19,9 +19,7 @@ function NavBar() {
                     <li><Button variant="outlined" color="secondary" className='button'><a href="#inicio">CONTACTO</a></Button></li>
                 </ul>
             </div>
-            <div className="header-container-carrito">
-                <img src={IconoCarrito} alt="Icono carrito"></img>
-            </div>
+            <Carrito />
         </header>
       </div>
     );
