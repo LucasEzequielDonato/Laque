@@ -1,0 +1,19 @@
+.container-compra {
+  width: 90%;
+  height: 20%;
+  margin: 4% auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid gray;
+  border-radius: 10px;
+  background-color: white;
+}
+.compra-icono {
+  width: auto;
+  height: 60%;
+  margin: 0px 15px;
+}
+.container-compra p {
+  color: pink;
+}
