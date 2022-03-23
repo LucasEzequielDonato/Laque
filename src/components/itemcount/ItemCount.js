@@ -3,7 +3,7 @@ import './ItemCount.css';
 import ImgSuma from "./add-outline.svg";
 import ImgResta from "./remove-outline.svg";
 
-export default function Card({info}) {
+export default function ItemCount({info}) {
 
     let stock = info
     const [count, setCount] = useState(0)
