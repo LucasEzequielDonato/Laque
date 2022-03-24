@@ -3,20 +3,21 @@ import './ItemCount.css';
 import ImgSuma from "./add-outline.svg";
 import ImgResta from "./remove-outline.svg";
 
-export default function ItemCount({info}) {
+export default function ItemCount({stock, inicializador, onAdd}) {
 
-    let stock = info
-    const [count, setCount] = useState(0)
+    const [count, setCount] = useState(inicializador)
 
     const agregarCompra = () => {
         if (count < stock) {
             setCount(count + 1)
+            onAdd(count + 1)
         }
     }
 
     const quitarCompra = () => {
-        if (count > 0) {
+        if (count > inicializador) {
             setCount(count - 1)
+            onAdd(count - 1)
         }
     }
 
