@@ -10,22 +10,27 @@ export default function ItemCount({stock, inicializador, onAdd}) {
     const agregarCompra = () => {
         if (count < stock) {
             setCount(count + 1)
-            onAdd(count + 1)
         }
     }
 
     const quitarCompra = () => {
-        if (count > inicializador) {
+        if (count > 1) {
             setCount(count - 1)
-            onAdd(count - 1)
         }
     }
 
+    const agregarCarrito = () => {
+        onAdd(count)
+    }
+
     return (
-        <div className='container-compra'>
-            <img className='compra-icono' src={ImgResta} alt="Icono Resta" onClick={quitarCompra}></img>
-            <p>{count}</p>
-            <img className='compra-icono' src={ImgSuma} alt="Icono Suma" onClick={agregarCompra}></img>
+        <div className='container-compra-carrito'>
+            <div className='container-compra'>
+                <img className='compra-icono' src={ImgResta} alt="Icono Resta" onClick={quitarCompra}></img>
+                <p>{count}</p>
+                <img className='compra-icono' src={ImgSuma} alt="Icono Suma" onClick={agregarCompra}></img>
+            </div>
+            <p className='carrito' onClick={agregarCarrito}>agregar a la compra</p>
         </div>
     )
 }
