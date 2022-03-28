@@ -30,7 +30,7 @@ export default function ItemCount({stock, inicializador, onAdd}) {
                 <p>{count}</p>
                 <img className='compra-icono' src={ImgSuma} alt="Icono Suma" onClick={agregarCompra}></img>
             </div>
-            <p className='carrito' onClick={agregarCarrito}>agregar a la compra</p>
+            {count > 0 && <p className='carrito' onClick={agregarCarrito}>agregar a la compra</p>}
         </div>
     )
 }

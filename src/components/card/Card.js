@@ -5,7 +5,12 @@ import ItemCount from "../itemcount/ItemCount";
 
 export default function Card({info}) {
 
-    let {titulo, talle, precio, stock} = info
+    try {
+        var {titulo, talle, precio, stock} = info
+        console.log(info)
+    } catch (error) {
+        
+    }
 
     const onAdd = (count) => { console.log(`Agregaste ${count} productos al carrito.`) }
 
