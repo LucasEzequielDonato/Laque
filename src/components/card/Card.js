@@ -3,7 +3,7 @@ import './Card.css';
 import ItemCount from "../itemcount/ItemCount";
 
 export default function Card({info}) {
-    
+
     const {img, titulo, talle, precio, stock} = info
 
     const onAdd = (count) => { console.log(`Agregaste ${count} productos al carrito.`) }
