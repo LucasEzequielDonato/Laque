@@ -7,8 +7,11 @@ const ItemList = ({productos}) => {
     
     return(
         <div className="container-category-cards">
-            <Card info={productos[0]}/>
-            <Card info={productos[1]}/>
+            {productos.map((producto, i) => {
+                return(
+                    <Card info={producto}/>
+                )
+            })}
         </div>
     )
 }
