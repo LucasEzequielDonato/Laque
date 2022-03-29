@@ -1,6 +1,5 @@
 import React from 'react';
 import './Card.css';
-import FotoProducto from "./FotoProductoPantalones.jpg";
 import ItemCount from "../itemcount/ItemCount";
 
 export default function Card({info}) {
