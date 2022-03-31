@@ -7,9 +7,9 @@ const ItemList = ({productos}) => {
     
     return(
         <div className="container-category-cards">
-            {productos.map((producto, i) => {
+            {productos.map((producto) => {
                 return(
-                    <Card info={producto}/>
+                    <Card key={producto.id} info={producto}/>
                 )
             })}
         </div>
