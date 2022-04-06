@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom';
 const ItemDetailContainer = ({children}) => {
     
     const {id} = useParams()
-    const [producto, setProduct] = useState()
+    const [producto, setProduct] = useState({})
 
     const filtrarProductoPorID = (array, id) => {
         return array.map((product) => {
@@ -17,7 +17,9 @@ const ItemDetailContainer = ({children}) => {
         })
     }
 
-    console.log(filtrarProductoPorID(mockProductos, id));
+    useEffect(() => {
+        console.log(filtrarProductoPorID(mockProductos, id))
+    }, [])
 
     return(
         <div className="container-category-description">
