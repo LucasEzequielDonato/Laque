@@ -2,31 +2,27 @@ import React, {useState, useEffect} from 'react';
 import "./ItemDetailContainer.css";
 import ItemDetail from "../itemdetail/ItemDetail.js";
 import mockProductos from '../../utils/Productos';
+import { useParams } from 'react-router-dom';
 
 const ItemDetailContainer = ({children}) => {
     
-    const [product, setProduct] = useState([])
+    const {id} = useParams()
+    const {producto, setProduct} = useState()
 
-    const obtenerProducto = () => {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve(mockProductos[0]);
-            }, 3000);
-        });
+    const filtrarProductoPorID = (array, id) => {
+        return array.map((product) => {
+            if(product.id === id) {
+                return setProduct(product);
+            }
+        })
     }
 
-    const obtenerProductoASYNC = async () => {
-        setProduct(await obtenerProducto())
-    }
-
-    useEffect (() => {
-        obtenerProductoASYNC();
-    }, [])
+    console.log(filtrarProductoPorID(mockProductos, id));
 
     return(
         <div className="container-category-description">
             <h2 className="cards-category"> {children} </h2>
-            <ItemDetail info={product}/>
+            <ItemDetail info={producto}/>
         </div>
     )
 }

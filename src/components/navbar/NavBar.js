@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import './NavBar.css';
 import Logo from "./logo-laque.webp";
@@ -13,8 +14,8 @@ function NavBar() {
             </div>
             <div className='header-container-navbar'>
                 <ul className='navbar'>
-                    <li><Button variant="outlined" color="secondary" className='button'><a href="#inicio">INICIO</a></Button></li>
-                    <li><Button variant="outlined" color="secondary" className='button'><a href="#inicio">PRODUCTOS</a></Button></li>
+                    <li><Button variant="outlined" color="secondary" className='button'><Link to={'/'}>INICIO</Link></Button></li>
+                    <li><Button variant="outlined" color="secondary" className='button'><Link to={'/productos'}>PRODUCTOS</Link></Button></li>
                     <li><Button variant="outlined" color="secondary" className='button'><a href="#inicio">NOSOTROS</a></Button></li>
                     <li><Button variant="outlined" color="secondary" className='button'><a href="#inicio">CONTACTO</a></Button></li>
                 </ul>

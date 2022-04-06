@@ -2,7 +2,7 @@ import React from 'react';
 import './ItemDetail.css';
 
 export default function itemdetail({info}) {
-
+    
     const {id, img, titulo, talle, precio, stock, descripcion} = info
 
     return (
