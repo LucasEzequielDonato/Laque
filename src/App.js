@@ -12,7 +12,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path='/' element={<HomePage/>}/>
-        <Route path='/productos/:categoria' element={<Productos/>}/>
+        <Route path='/productos/:titulo' element={<Productos/>}/>
         <Route path='/producto/:id' element={<Producto/>}/>
       </Routes>
     </BrowserRouter>

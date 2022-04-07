@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 
 const ItemListContainer = ({children}) => {
 
-    const {categoria} = useParams()
+    const {titulo} = useParams()
     const [products, setProducts] = useState([])
     const [productosFiltrados, setProductosFiltrados] = useState([])
     
@@ -18,9 +18,9 @@ const ItemListContainer = ({children}) => {
         });
     }
 
-    const filtrarProductoPorCATEGORIA = (array, categoria) => {
+    const filtrarProductoPorCATEGORIA = (array, titulo) => {
         return array.map((product) => {
-            if(product.titulo === categoria) {
+            if(product.titulo === titulo) {
                 console.log("Si encontre")
                 setProductosFiltrados(product);
             }
@@ -29,7 +29,7 @@ const ItemListContainer = ({children}) => {
 
     const obtenerProductosASYNC = async () => {
         setProducts(await obtenerProductos())
-        filtrarProductoPorCATEGORIA(mockProductos,categoria);
+        filtrarProductoPorCATEGORIA(mockProductos,titulo);
     }
 
     useEffect (() => {
@@ -39,7 +39,7 @@ const ItemListContainer = ({children}) => {
     return(
         <div className="container-category">
             <h2 className="cards-category"> {children} </h2>
-            <ItemList productos={productosFiltrados}/>
+            <ItemList productos={products}/>
         </div>
     )
 }
