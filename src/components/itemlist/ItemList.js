@@ -4,7 +4,6 @@ import Card from "../card/Card";
 
 const ItemList = ({productos}) => {
     
-    
     return(
         <div className="container-category-cards">
             {productos.map((producto) => {

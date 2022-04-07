@@ -7,30 +7,32 @@ import { useParams } from 'react-router-dom';
 const ItemListContainer = ({children}) => {
 
     const {titulo} = useParams()
+
     const [products, setProducts] = useState([])
-    
-    const obtenerProductos = () => {
+
+    const getProducts = () => {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 resolve(mockProductos);
             }, 3000);
-        });
-    }
+        })
+    } 
 
-    const filtrarProductoPorCATEGORIA = (array, titulo) => {
-        return array.map((product) => {
+    useEffect( () => {
+        setProducts([])
+        getProducts().then( (productos) => {
+            titulo ? filtrarProductoPorTitulo(productos, titulo) : setProducts(productos)
+        })
+    }, [titulo])
+
+
+    const filtrarProductoPorTitulo = (array , titulo) => {
+        return array.map( (product) => {
             if(product.titulo === titulo) {
-                return setProducts(product => [...products, product]);
+               return setProducts(products => [...products, product]);
             }
         })
     }
-
-    useEffect (() => {
-        setProducts([])
-        obtenerProductos().then((productos) => {
-            titulo ? filtrarProductoPorCATEGORIA(productos, titulo) : setProducts(productos)
-        })
-    }, [titulo])
 
     return(
         <div className="container-category">
