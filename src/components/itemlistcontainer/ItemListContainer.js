@@ -8,7 +8,6 @@ const ItemListContainer = ({children}) => {
 
     const {titulo} = useParams()
     const [products, setProducts] = useState([])
-    const [productosFiltrados, setProductosFiltrados] = useState([])
     
     const obtenerProductos = () => {
         return new Promise((resolve, reject) => {
@@ -21,20 +20,17 @@ const ItemListContainer = ({children}) => {
     const filtrarProductoPorCATEGORIA = (array, titulo) => {
         return array.map((product) => {
             if(product.titulo === titulo) {
-                console.log("Si encontre")
-                setProductosFiltrados(product);
+                return setProducts(product => [...products, product]);
             }
         })
     }
 
-    const obtenerProductosASYNC = async () => {
-        setProducts(await obtenerProductos())
-        filtrarProductoPorCATEGORIA(mockProductos,titulo);
-    }
-
     useEffect (() => {
-    obtenerProductosASYNC();
-    }, [])
+        setProducts([])
+        obtenerProductos().then((productos) => {
+            titulo ? filtrarProductoPorCATEGORIA(productos, titulo) : setProducts(productos)
+        })
+    }, [titulo])
 
     return(
         <div className="container-category">
