@@ -18,7 +18,7 @@ const ItemDetailContainer = ({children}) => {
     }
 
     useEffect(() => {
-        console.log(filtrarProductoPorID(mockProductos, id))
+        filtrarProductoPorID(mockProductos, id)
     }, [])
 
     return(
