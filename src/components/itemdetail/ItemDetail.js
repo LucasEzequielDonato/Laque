@@ -1,6 +1,6 @@
 import React from 'react';
 import './ItemDetail.css';
-import ItemDetailCount from '../itemdetailcount/ItemDetailCount';
+import ItemCount from '../itemcount/ItemCount';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 export default function itemdetail({info}) {
@@ -19,12 +19,13 @@ export default function itemdetail({info}) {
                 <img className='description-imagen' src={img} alt="Icono Producto"></img> 
             </div>
             <div className='container-description2'>
-                <p className='description-titulo'>{titulo}</p>
-                <p className='description-titulo'>{descripcion}</p>
-                <p className='description-talle'>{talle}</p>
-                <p className='description-precio'>$ {precio}</p>
-                <p className='description-precio'>Quedan en STOCK: {stock}</p>
-                <ItemDetailCount stock={stock} inicializador={1} onAdd={changePage}></ItemDetailCount>
+                <p className='item-detail-titulo'>{titulo}</p>
+                <p className='item-detail-descripcion'>{descripcion}</p>
+                <p className='item-detail-talle'>{talle}</p>
+                <p className='item-detail-precio'>$ {precio}</p>
+                <ItemCount stock={stock} inicializador={1} onAdd={changePage}>
+                    <p>TERMINAR</p>
+                </ItemCount>
             </div>
         </div>
     )

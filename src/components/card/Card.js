@@ -16,7 +16,9 @@ export default function Card({info}) {
                 <p className='card-description-titulo'>{titulo}</p>
                 <p className='card-description-talle'>{talle}</p>
                 <p className='card-description-precio'>$ {precio}</p>
-                <ItemCount stock={stock} inicializador={1} onAdd={onAdd}/>
+                <ItemCount stock={stock} inicializador={1} onAdd={onAdd}>
+                    <p>agregar al carrito</p>
+                </ItemCount>
             </div>
         </div>
     )

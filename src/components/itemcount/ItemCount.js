@@ -4,7 +4,7 @@ import ImgSuma from "./add-outline.svg";
 import ImgResta from "./remove-outline.svg";
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 
-export default function ItemCount({stock, inicializador, onAdd}) {
+export default function ItemCount({children, stock, inicializador, onAdd}) {
 
     const [count, setCount] = useState(inicializador)
     const [count2, setCount2] = useState(stock)
@@ -34,7 +34,7 @@ export default function ItemCount({stock, inicializador, onAdd}) {
                 <p>{count}</p>
                 <button className='boton-compra' onClick={agregarCompra}><img className='compra-icono' src={ImgSuma} alt="Icono Suma"></img></button>
             </div>
-            {count > 0 && <p className='carrito' onClick={agregarCarrito}>agregar al carrito</p>}
+            {count > 0 && <p className='carrito' onClick={agregarCarrito}>{children}</p>}
         </div>
     )
 }
