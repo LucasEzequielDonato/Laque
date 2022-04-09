@@ -1,21 +1,22 @@
 import React from 'react';
 import './Card.css';
 import ItemCount from "../itemcount/ItemCount";
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 export default function Card({info}) {
 
-    const {img, titulo, talle, precio, stock} = info
+    const {id, img, titulo, talle, precio, stock} = info
 
     const onAdd = (count) => { console.log(`Agregaste ${count} productos al carrito.`) }
 
     return (
         <div className="container-card">
-            <img className='card-imagen' src={img} alt="Icono Producto"></img>
+            <Link to={`/producto/${id}`}><img className='card-imagen' src={img} alt="Icono Producto"></img></Link>
             <div className='container-description'>
-                <p className='description-titulo'>{titulo}</p>
-                <p className='description-talle'>{talle}</p>
-                <p className='description-precio'>$ {precio}</p>
-                <ItemCount stock={stock} inicializador={0} onAdd={onAdd}/>
+                <p className='card-description-titulo'>{titulo}</p>
+                <p className='card-description-talle'>{talle}</p>
+                <p className='card-description-precio'>$ {precio}</p>
+                <ItemCount stock={stock} inicializador={1} onAdd={onAdd}/>
             </div>
         </div>
     )

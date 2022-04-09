@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import "./ItemDetailContainer.css";
 import ItemDetail from "../itemdetail/ItemDetail.js";
-import mockProductos from '../../utils/Productos';
+import mockProductos from '../../utils/mockProductos';
 import { useParams } from 'react-router-dom';
 
 const ItemDetailContainer = ({children}) => {
