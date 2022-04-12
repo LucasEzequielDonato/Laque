@@ -7,6 +7,7 @@ export default function ItemCount({children, stock, inicializador, action}) {
 
     const [count, setCount] = useState(inicializador);
     const [count2, setCount2] = useState(stock);
+    const [habilitar, setHabilitar] = useState("True");
 
     const agregarCompra = () => {
         if (count < stock) {
@@ -22,6 +23,10 @@ export default function ItemCount({children, stock, inicializador, action}) {
         }
     }
 
+    const habilitarBotonFinalizar = () => {
+        setHabilitar("False")
+    }
+
     return (
         <div className='container-compra-carrito'>
             <div className='container-compra'>
@@ -29,7 +34,8 @@ export default function ItemCount({children, stock, inicializador, action}) {
                 <p>{count}</p>
                 <button className='boton-compra' onClick={agregarCompra}><img className='compra-icono' src={ImgSuma} alt="Icono Suma"></img></button>
             </div>
-            {count > 0 && <p className='carrito' onClick={(e) => {action(parseInt(count))}}>{children}</p>}
+            {habilitar === "True" && <button className='carrito' onClick={habilitarBotonFinalizar}>AGREGAR AL CARRITO</button>}
+            {habilitar === "False" && <button className='carrito' onClick={(e) => {action(parseInt(count))}}>{children}</button>}
         </div>
     )
 }

@@ -11,6 +11,7 @@ export default function ItemDetail({info}) {
 
     const finalizarCompra = (cant) => {
         setCantidad(cant)
+        Navigate("/cart")
     }
 
     return (
