@@ -1,16 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './ItemDetail.css';
 import ItemCount from '../itemcount/ItemCount';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 
-export default function itemdetail({info}) {
+export default function ItemDetail({info}) {
     
     const {id, img, titulo, talle, precio, stock, descripcion} = info
 
-    const onAdd = (count) => { console.log(`Agregaste ${count} productos al carrito.`) }
+    const [cantidad, setCantidad] = useState(0);
 
-    const changePage = () => {
-        Navigate("/cart")
+    const finalizarCompra = (cant) => {
+        setCantidad(cant)
     }
 
     return (
@@ -23,7 +23,7 @@ export default function itemdetail({info}) {
                 <p className='item-detail-descripcion'>{descripcion}</p>
                 <p className='item-detail-talle'>{talle}</p>
                 <p className='item-detail-precio'>$ {precio}</p>
-                <ItemCount stock={stock} inicializador={1} onAdd={changePage}>
+                <ItemCount stock={stock} inicializador={1} action={finalizarCompra}>
                     <p>TERMINAR</p>
                 </ItemCount>
             </div>
