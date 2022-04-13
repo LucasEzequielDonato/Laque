@@ -1,7 +1,7 @@
 import React from 'react';
 import './Card.css';
 import ItemCount from "../itemcount/ItemCount";
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Card({info}) {
 
@@ -16,7 +16,7 @@ export default function Card({info}) {
                 <p className='card-description-titulo'>{titulo}</p>
                 <p className='card-description-talle'>{talle}</p>
                 <p className='card-description-precio'>$ {precio}</p>
-                <ItemCount stock={stock} inicializador={1} onAdd={onAdd}>
+                <ItemCount stock={stock} inicializador={1} action={onAdd}>
                     <p>agregar al carrito</p>
                 </ItemCount>
             </div>

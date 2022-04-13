@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './ItemDetail.css';
 import ItemCount from '../itemcount/ItemCount';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function ItemDetail({info}) {
     
@@ -9,9 +9,11 @@ export default function ItemDetail({info}) {
 
     const [cantidad, setCantidad] = useState(0);
 
+    const navigate = useNavigate()
+
     const finalizarCompra = (cant) => {
         setCantidad(cant)
-        Navigate("/cart")
+        navigate(`/cart`)
     }
 
     return (
