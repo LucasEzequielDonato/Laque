@@ -1,7 +1,7 @@
 import React, {useState, useContext} from 'react';
 import './Card.css';
 import ItemCount from "../itemcount/ItemCount";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import CartContext from '../../context/CartContext';
 
 export default function Card({info}) {
@@ -11,9 +11,7 @@ export default function Card({info}) {
     const [count, setCount] = useState(1);
     const [count2, setCount2] = useState(stock);
     const [habilitar, setHabilitar] = useState("True");
-    const navigate = useNavigate()
-    const [cantidad, setCantidad] = useState(0);
-    const {carrito, agregarProductoAlCarro} = useContext(CartContext)
+    const {carrito, agregarProductoAlCarro} = useContext(CartContext);
     
     const agregarCompra = () => {
         if (count < stock) {
@@ -24,23 +22,18 @@ export default function Card({info}) {
 
     const quitarCompra = () => {
         if (count > 1) {
-            setCount(count - 1)
-            setCount2(count2 + 1)
+            setCount(count - 1);
+            setCount2(count2 + 1);
         }
     }
 
     const habilitarBotonFinalizar = () => {
-        setHabilitar("False")
+        setHabilitar("False");
     }
 
     const finalizarCompra = (cant) => {
-        const producto = [{
-            id : id,
-            precio : precio,
-            cantidad : cant
-        }]
-        agregarProductoAlCarro(producto)
-        navigate(`/cart`)
+        agregarProductoAlCarro({...info, cantidad : cant});
+        setHabilitar("True");
     }
 
     return (

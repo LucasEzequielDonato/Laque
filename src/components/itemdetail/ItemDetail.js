@@ -1,18 +1,17 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import './ItemDetail.css';
 import ItemCount from '../itemcount/ItemCount';
 import { Link, useNavigate } from 'react-router-dom';
+import CartContext from '../../context/CartContext';
 
 export default function ItemDetail({info}) {
     
     const {id, img, titulo, talle, precio, stock, descripcion} = info
 
-    const [cantidad, setCantidad] = useState(0);
-
     const [habilitar, setHabilitar] = useState("True");
 
     const navigate = useNavigate()
-
+    const {carrito, agregarProductoAlCarro} = useContext(CartContext);
     const [count, setCount] = useState(1);
     const [count2, setCount2] = useState(stock);
     
@@ -31,7 +30,7 @@ export default function ItemDetail({info}) {
     }
 
     const finalizarCompra = (cant) => {
-        setCantidad(cant)
+        agregarProductoAlCarro({...info, cantidad : cant});
         navigate(`/cart`)
     }
 

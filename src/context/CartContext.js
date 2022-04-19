@@ -3,16 +3,30 @@ import { createContext, useState } from "react";
 const CartContext = createContext();
 
 const CartProvider = ({children}) => {
-    const [carrito, agregarCompra] = useState([])
+    const [carrito, setCarrito] = useState([])
 
     const agregarProductoAlCarro = (producto) => {
-        agregarCompra(producto)
+        if ( yaEstaEnElCarrito(producto.id) ) {
+            const produc = carrito.find((p) => p.id === producto.id);
+            const { cantidad } = produc;
+            produc.cantidad = producto.cantidad + cantidad;
+            const nuevoCarrito = [ ...carrito ];
+            setCarrito(nuevoCarrito);
+        } else {
+            setCarrito([ ...carrito, producto])
+        }
+    }
+
+    const yaEstaEnElCarrito = (id) => {
+        return carrito.some( producto => producto.id === id)
     }
     
     const data = {
         carrito,
         agregarProductoAlCarro
     }
+
+    console.log(carrito)
 
     return(
         <CartContext.Provider value={data}>
