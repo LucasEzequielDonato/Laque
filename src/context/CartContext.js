@@ -21,6 +21,14 @@ const CartProvider = ({children}) => {
         return carrito.some( producto => producto.id === id)
     }
     
+    const vaciarCarrito = () => {
+        setCarrito([])
+    }
+
+    const borrarProducto = (id) => {
+        setCarrito(carrito.filter(produc => produc.id !== id));
+    }
+
     const data = {
         carrito,
         agregarProductoAlCarro
