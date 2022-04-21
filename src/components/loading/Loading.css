@@ -1,0 +1,11 @@
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(115, 115, 255);
+    z-index: 1000;
+}
