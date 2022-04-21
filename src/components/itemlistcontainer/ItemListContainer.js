@@ -13,6 +13,7 @@ const ItemListContainer = ({children}) => {
     const [loading, setLoading] = useState([true])
 
     const getProducts = () => {
+        setLoading(true)
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 resolve(mockProductos);
