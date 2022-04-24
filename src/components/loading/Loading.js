@@ -1,10 +1,10 @@
 import React from 'react';
 import './Loading.css';
 
-function Loading() {
+function Loading({children}) {
     return (
         <div className="loading-container">
-            <p>Espere, se estan cargando los productos...</p>
+            <h2>{children}</h2>
         </div>
     );
 }

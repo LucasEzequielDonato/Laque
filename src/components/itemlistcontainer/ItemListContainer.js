@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import "./ItemListContainer.css";
 import ItemList from "../itemlist/ItemList";
-import mockProductos from '../../utils/mockProductos';
 import { useParams } from 'react-router-dom';
 import Loading from '../loading/Loading';
+import db from '../../utils/firebase';
+import {collection, getDocs} from 'firebase/firestore';
 
 const ItemListContainer = ({children}) => {
 
@@ -12,16 +13,20 @@ const ItemListContainer = ({children}) => {
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState([true])
 
-    const getProducts = () => {
-        setLoading(true)
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve(mockProductos);
-            }, 3000);
-        })
+    const getProducts = async () => {
+        const itemsCollection = collection(db, 'productos');
+        const productosSnapshot = await getDocs(itemsCollection);
+        const listaDeProductos = productosSnapshot.docs.map((doc) => {
+            let producto = doc.data();
+            producto.id = doc.id;
+            return producto; 
+            }
+        );
+        return listaDeProductos
     } 
 
     useEffect( () => {
+        setLoading(true)
         setProducts([])
         getProducts().then( (productos) => {
             titulo ? filtrarProductoPorTitulo(productos, titulo) : setProducts(productos)
@@ -43,7 +48,9 @@ const ItemListContainer = ({children}) => {
         {
             loading
             ?
-            <Loading></Loading>
+            <Loading>
+                <p>Espere, se estan cargando los productos...</p>
+            </Loading>
             :
             <div className="container-category">
                 <h2 className="cards-category"> {children} </h2>

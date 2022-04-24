@@ -7,33 +7,12 @@ import CartContext from '../../context/CartContext';
 export default function Card({info}) {
 
     const {id, img, titulo, talle, precio, stock} = info
-
-    const [count, setCount] = useState(1);
-    const [count2, setCount2] = useState(stock);
     const [habilitar, setHabilitar] = useState("True");
-    const {carrito, agregarProductoAlCarro} = useContext(CartContext);
-    
-    const agregarCompra = () => {
-        if (count < stock) {
-            setCount(count + 1)
-            setCount2(count2 - 1)
-        }
-    }
+    const {agregarProductoAlCarro} = useContext(CartContext);
 
-    const quitarCompra = () => {
-        if (count > 1) {
-            setCount(count - 1);
-            setCount2(count2 + 1);
-        }
-    }
-
-    const habilitarBotonFinalizar = () => {
-        setHabilitar("False");
-    }
-
-    const finalizarCompra = (cant) => {
+    const habilitarBotonFinalizar = (cant) => {
         agregarProductoAlCarro({...info, cantidad : cant});
-        setHabilitar("True");
+        setHabilitar("False");
     }
 
     return (
@@ -43,10 +22,12 @@ export default function Card({info}) {
                 <p className='card-description-titulo'>{titulo}</p>
                 <p className='card-description-talle'>{talle}</p>
                 <p className='card-description-precio'>$ {precio}</p>
-                {habilitar === "True" && <ItemCount inicializador={count} action1={quitarCompra} action2={agregarCompra} action3={habilitarBotonFinalizar}>
+                {habilitar === "True" && 
+                <ItemCount stock={stock} accion1={habilitarBotonFinalizar}>
                     <p>AGREGAR AL CARRITO</p>
                 </ItemCount>}
-                {habilitar === "False" && <button className='carrito' onClick={(e) => {finalizarCompra(parseInt(count))}}>TERMINAR</button>}
+                {habilitar === "False" && 
+                <Link to={'/cart'} className='carrito'>TERMINAR</Link>}
             </div>
         </div>
     )

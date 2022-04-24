@@ -31,7 +31,8 @@ const CartProvider = ({children}) => {
 
     const data = {
         carrito,
-        agregarProductoAlCarro
+        agregarProductoAlCarro,
+        borrarProducto
     }
 
     console.log(carrito)
