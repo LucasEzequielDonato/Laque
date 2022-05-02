@@ -14,10 +14,10 @@ function NavBar() {
             </button>
             <div className='header-container-navbar'>
                 <ul className='navbar'>
-                    <li><Button variant="outlined" color="secondary" className='button'><Link to={'/'}>INICIO</Link></Button></li>
-                    <li><Button variant="outlined" color="secondary" className='button'><Link to={'/productos'}>PRODUCTOS</Link></Button></li>
-                    <li><Button variant="outlined" color="secondary" className='button'><Link to={'/productos/pantalon'}>PANTALONES</Link></Button></li>
-                    <li><Button variant="outlined" color="secondary" className='button'><Link to={'/productos/camisa'}>CAMISAS</Link></Button></li>
+                    <li><Link to={'/'}><Button variant="outlined" color="secondary" className='button'>INICIO</Button></Link></li>
+                    <li><Link to={'/productos'}><Button variant="outlined" color="secondary" className='button'>PRODUCTOS</Button></Link></li>
+                    <li><Link to={'/productos/pantalon'}><Button variant="outlined" color="secondary" className='button'>PANTALONES</Button></Link></li>
+                    <li><Link to={'/productos/camisa'}><Button variant="outlined" color="secondary" className='button'>CAMISAS</Button></Link></li>
                     <li><Button variant="outlined" color="secondary" className='button'><a href="#inicio">NOSOTROS</a></Button></li>
                     <li><Button variant="outlined" color="secondary" className='button'><a href="#inicio">CONTACTO</a></Button></li>
                 </ul>
