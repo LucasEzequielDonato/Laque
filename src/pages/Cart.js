@@ -8,7 +8,7 @@ import db from '../utils/firebase';
 import { addDoc, collection } from 'firebase/firestore';
 
 export default function Cart() {
-    const {carrito, borrarProducto, cantidadTotal, precioTotal, vaciarCarrito} = useContext(CartContext);
+    const {carrito, borrarProducto, cantidadTotal, precioTotal, vaciarTodo} = useContext(CartContext);
     const [openModal, setOpenModal] = useState(false)
     const [formData, setFormData] = useState({
         name: '',
@@ -29,28 +29,33 @@ export default function Cart() {
         }
     )
     const [successOrder, setSuccessOrder] = useState()
+    const [validado, setValidado] = useState(true)
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        let prevOrder = {...order,
-            buyer: formData
+        if (formData.name === "" || formData.phone === "" || formData.email === "") {
+            setValidado(false)
         }
-        setOrder({...order,
-            buyer: formData})
-        pushOrder(prevOrder)
+        else {
+            let prevOrder = {...order,
+                buyer: formData
+            }
+            setOrder({...order,
+                buyer: formData})
+            pushOrder(prevOrder)
+        }
     }
 
     const pushOrder = async (prevOrder) => {
         const orderFirebase = collection(db, 'ordenes')
         const orderDoc = await addDoc(orderFirebase, prevOrder)
         setSuccessOrder(orderDoc.id)
-        vaciarCarrito();
+        vaciarTodo();
+
     }
 
     const handleChange = (e) => {
         const {value, name} = e.target
-        console.log("value: ", value)
-        console.log("name: ", name)
 
         setFormData({
             ...formData,
@@ -95,17 +100,22 @@ export default function Cart() {
                     </div>
                 ) : (
                     <div className='cart-container-formulario'>
-                        <h2 className='formulario-titulo'>INGRESA</h2>
+                        {validado &&
+                            <h2 className='formulario-titulo'>INGRESA</h2>
+                        }
+                        {validado === false &&
+                            <h2 className='formulario-titulo'>COMPLETA TODOS LOS CAMPOS</h2>
+                        }
                         <form className='formulario-container-descripcion' onSubmit={handleSubmit}>
-                            <input className='formulario-campos' type="text" name='name' placeholder='NOMBRE COMPLETO' 
+                            <input className='formulario-campos' type="text" name='name' placeholder='NOMBRE Y APELLIDO'
                                 onChange={handleChange} 
                                 value={formData.name}
                             />
-                            <input className='formulario-campos' type="number" name='phone' placeholder='TELEFONO CELULAR' 
+                            <input className='formulario-campos' type="number" name='phone' placeholder='TELEFONO' 
                                 onChange={handleChange} 
                                 value={formData.phone}
                             />
-                            <input className='formulario-campos' type="mail" name='email' placeholder='MAIL' 
+                            <input className='formulario-campos' type="mail" name='email' placeholder='EMAIL'
                                 onChange={handleChange} 
                                 value={formData.email}
                             />

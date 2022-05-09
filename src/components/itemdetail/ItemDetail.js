@@ -1,19 +1,14 @@
 import React, {useState, useContext} from 'react';
 import './ItemDetail.css';
 import ItemCount from '../itemcount/ItemCount';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import CartContext from '../../context/CartContext';
 
 export default function ItemDetail({info}) {
     
-    const {id, img, titulo, talle, precio, stock, descripcion} = info
+    const {img, titulo, talle, precio, stock, descripcion} = info
     const [habilitar, setHabilitar] = useState("True");
-    const navigate = useNavigate()
     const {agregarProductoAlCarro} = useContext(CartContext);
-
-    const finalizarCompra = () => {
-        navigate(`/cart`)
-    }
 
     const habilitarBotonFinalizar = (cant) => {
         agregarProductoAlCarro({...info, cantidad : cant});
@@ -30,10 +25,14 @@ export default function ItemDetail({info}) {
                 <p className='item-detail-descripcion'>{descripcion}</p>
                 <p className='item-detail-talle'>{talle}</p>
                 <p className='item-detail-precio'>$ {precio}</p>
-                {habilitar === "True" && <ItemCount stock={stock} accion1={habilitarBotonFinalizar}>
-                    <p>AGREGAR AL CARRITO</p>
-                </ItemCount>}
-                {habilitar === "False" && <Link to={'/cart'} className='carrito'>TERMINAR</Link>}
+                <div className='item-container-count'>
+                    {habilitar === "True" &&
+                        <ItemCount stock={stock} accion1={habilitarBotonFinalizar}>
+                            <p>AGREGAR AL CARRITO</p>
+                        </ItemCount>}
+                    {habilitar === "False" && 
+                        <Link to={'/cart'} className='btn-terminar'>TERMINAR</Link>}
+                </div>
             </div>
         </div>
     )

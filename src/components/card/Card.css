@@ -69,3 +69,22 @@
   font-size: 14px;
   font-family: "Raleway", sans-serif;
 }
+.card-container-count {
+  width: 100%;
+  height: 55%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-terminar {
+  width: 150px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: pink;
+  color: black;
+  font-weight: 500;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

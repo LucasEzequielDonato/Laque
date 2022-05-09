@@ -6,8 +6,6 @@ const CartProvider = ({children}) => {
     const [carrito, setCarrito] = useState([])
     const [precioTotal, setPrecioTotal] = useState(0)
     const [cantidadTotal, setCantidadTotal] = useState(0);
-    console.log(precioTotal);
-    console.log(cantidadTotal);
 
     const agregarProductoAlCarro = (producto) => {
         if ( yaEstaEnElCarrito(producto.id) ) {
@@ -27,8 +25,10 @@ const CartProvider = ({children}) => {
         return carrito.some( producto => producto.id === id)
     }
     
-    const vaciarCarrito = () => {
+    const vaciarTodo = () => {
         setCarrito([])
+        setPrecioTotal(0)
+        setCantidadTotal(0)
     }
 
     const borrarProducto = (id) => {
@@ -44,10 +44,8 @@ const CartProvider = ({children}) => {
         cantidadTotal,
         agregarProductoAlCarro,
         borrarProducto,
-        vaciarCarrito,
+        vaciarTodo,
     }
-
-    console.log(carrito)
 
     return(
         <CartContext.Provider value={data}>

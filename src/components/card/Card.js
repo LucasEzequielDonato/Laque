@@ -22,12 +22,14 @@ export default function Card({info}) {
                 <p className='card-description-titulo'>{titulo}</p>
                 <p className='card-description-talle'>{talle}</p>
                 <p className='card-description-precio'>$ {precio}</p>
-                {habilitar === "True" && 
-                <ItemCount stock={stock} accion1={habilitarBotonFinalizar}>
-                    <p>AGREGAR AL CARRITO</p>
-                </ItemCount>}
-                {habilitar === "False" && 
-                <Link to={'/cart'} className='carrito'>TERMINAR</Link>}
+                <div className='card-container-count'>
+                    {habilitar === "True" &&
+                        <ItemCount stock={stock} accion1={habilitarBotonFinalizar}>
+                            <p>AGREGAR AL CARRITO</p>
+                        </ItemCount>}
+                    {habilitar === "False" && 
+                        <Link to={'/cart'} className='btn-terminar'>TERMINAR</Link>}
+                </div>
             </div>
         </div>
     )
